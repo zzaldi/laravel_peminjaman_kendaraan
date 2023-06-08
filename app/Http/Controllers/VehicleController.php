@@ -63,8 +63,8 @@ class VehicleController extends Controller
 
     public function show($id)
     {
-        // $vehicle = Vehicle::find($id);
-        // return view('vehicles.show', compact('vehicle'));
+        $vehicle = Vehicle::find($id);
+        return view('vehicles.show', compact('vehicle'));
     }
 
     public function edit($id)
@@ -90,6 +90,6 @@ class VehicleController extends Controller
     public function destroy($id)
     {
         Vehicle::destroy($id);
-        return redirect()->route('vehicles.index')->with('success', 'Vehicle deleted successfully.');
+        return redirect()->route('dashboard')->with('success', 'Vehicle deleted successfully.');
     }
 }

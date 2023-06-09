@@ -26,10 +26,8 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('full name');
-            $table->string('Company');
-            $table->string('Email');
-            $table->integer('Phone number');
+            $table->string('Email address');
+            $table->string('Password');
             $table->timestamps();
         });
     }

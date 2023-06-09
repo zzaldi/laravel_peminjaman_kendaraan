@@ -1,4 +1,4 @@
-@section('pageTitle', 'Create Vehicle')
+@section('pageTitle', 'Edit Vehicle')
 @extends('app.app')
 @section('content')
     <div class="card">
@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="btn-create">
-                <form method="POST" action="{{ route('vehicles.store') }}">
+                <form method="POST" action="{{ route('vehicles.edit') }}">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>

@@ -17,12 +17,12 @@
                      <span class="avatar avatar-sm"
                          style="background-image: url({{ asset('assets/static/avatars/000m.jpg') }})"></span>
                      <div class="d-none d-xl-block ps-2">
-                         <div>Paweł Kuna</div>
-                         <div class="mt-1 small text-muted">UI Designer</div>
+                         <div>Zaldi</div>
+                         <div class="mt-1 small text-muted">zaldizaldizaldi032@gmail.com</div>
                      </div>
                  </a>
                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <a href="./login-in.html" class="dropdown-item">login</a>
+                     <a href="{{ route('vehicles.login') }}" class="dropdown-item">login</a>
                      <div class="dropdown-divider"></div>
                      <a href="./sign-in.html" class="dropdown-item">logout</a>
                  </div>
@@ -36,11 +36,7 @@
              <div class="container-xl">
                  <ul class="navbar-nav">
                      <li class="nav-item {{ request()->routeIs('vehicles.login') ? 'active' : '' }}">
-                         <a class="nav-link" href="{{ route('vehicles.login') }}">
-                             <span class="nav-link-title">
-                                 login
-                             </span>
-                         </a>
+
                      </li>
                      <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                          <a class="nav-link" href="{{ route('dashboard') }}">
@@ -61,18 +57,15 @@
                          <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
                              data-bs-auto-close="outside" role="button" aria-expanded="false">
                              <span class="nav-link-title">
-                                 Perpustakaan
+                                 Contact
                              </span>
                          </a>
                          <div class="dropdown-menu">
-                             <a class="dropdown-item" href="{{-- route('perpus.categories.index') --}}" rel="noopener">
-                                 Kategori
+                             <a class="dropdown-item" href="{{ route('vehicles.login') }}">
+                                 login
                              </a>
                              <a class="dropdown-item" href="{{-- route('perpus.author') --}}">
-                                 Autor
-                             </a>
-                             <a class="dropdown-item" href="{{-- route('perpus.borrowings') --}}" rel="noopener">
-                                 Peminjaman
+                                 logout
                              </a>
                          </div>
                      </li>

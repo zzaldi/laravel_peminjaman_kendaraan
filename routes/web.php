@@ -13,4 +13,4 @@ Route::get('/vehicles/{id}/edit', [VehicleController::class, 'edit'])->name('veh
 Route::put('/vehicles/{id}', [VehicleController::class, 'update'])->name('vehicles.update');
 Route::delete('/vehicles/{id}', [VehicleController::class, 'destroy'])->name('vehicles.destroy');
 Route::get('/vehicles/login', [VehicleController::class, 'login'])->name('vehicles.login');
-Route::post('vehicle/logout', [LogoutController::class, 'logout'])->name('logout');
+Route::get('/vehicle/logout', [VehicleController::class, 'logout'])->name('vehicle.logout');

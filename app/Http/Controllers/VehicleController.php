@@ -17,30 +17,22 @@ class VehicleController extends Controller
         return view('vehicles.login');
     }
 
-    public function showLoginForm(Request $request)
+    public function register(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+        $request->validate([
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
         ]);
 
-        if (Vehicle::attempt($credentials)) {
-            // Authentication passed
-            return redirect()->intended('vehicle');
-        }
-
-        return back()->withErrors([
-            'email' => 'Invalid email or password.',
+        $user = Vehicle::create([
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
         ]);
+
+        Vehicle::login($user);
+
+        return redirect('/dashboard');
     }
-
-    public function logout()
-    {
-        Vehicle::logout();
-        return redirect('/login');
-    }
-
-
 
     public function create()
     {
@@ -91,5 +83,24 @@ class VehicleController extends Controller
     {
         Vehicle::destroy($id);
         return redirect()->route('dashboard')->with('success', 'Vehicle deleted successfully.');
+    }
+
+    public function logiut($id)
+    {
+        $vehicle = Vehicle::find($id);
+        return view('vehicles.logout', compact('vehicle'));
+    }
+
+    public function logout(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/dashboard');
     }
 }

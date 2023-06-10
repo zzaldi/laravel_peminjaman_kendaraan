@@ -22,7 +22,7 @@
                      </div>
                  </a>
                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <a href="{{ route('vehicles.login') }}" class="dropdown-item">login</a>
+                     <a href="{{ route('vehicle.logout') }}" class="dropdown-item">login</a>
                      <div class="dropdown-divider"></div>
                      <a href="./sign-in.html" class="dropdown-item">logout</a>
                  </div>
@@ -64,7 +64,7 @@
                              <a class="dropdown-item" href="{{ route('vehicles.login') }}">
                                  login
                              </a>
-                             <a class="dropdown-item" href="{{-- route('perpus.author') --}}">
+                             <a class="dropdown-item" href="{{ route('vehicle.logout') }}">
                                  logout
                              </a>
                          </div>

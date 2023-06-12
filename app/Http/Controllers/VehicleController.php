@@ -61,7 +61,8 @@ class VehicleController extends Controller
 
     public function edit($id)
     {
-        $vehicle = Vehicle::find($id);
+        $vehicle = Vehicle::findOrFail($id);
+
         return view('vehicles.edit', compact('vehicle'));
     }
 
@@ -74,10 +75,14 @@ class VehicleController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        $vehicle = Vehicle::find($id);
+        $vehicle = Vehicle::findOrFail($id);
         $vehicle->update($request->all());
-        return redirect()->route('vehicles.index')->with('success', 'Vehicle updated successfully.');
+
+        return redirect()->route('vehicles.index')
+            ->with('success', 'Vehicle updated successfully');
     }
+
+
 
     public function destroy($id)
     {

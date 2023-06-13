@@ -14,3 +14,14 @@ Route::put('/vehicles/{id}', [VehicleController::class, 'update'])->name('vehicl
 Route::delete('/vehicles/{id}', [VehicleController::class, 'destroy'])->name('vehicles.destroy');
 Route::get('/vehicles/login', [VehicleController::class, 'login'])->name('vehicles.login');
 Route::get('/vehicle/logout', [VehicleController::class, 'logout'])->name('vehicle.logout');
+
+// Rute untuk halaman login admin
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login']);
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+// Rute yang memerlukan autentikasi admin
+Route::middleware(['admin'])->prefix('admin')->group(function () {
+    // Rute untuk halaman dashboard admin
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+});

@@ -15,7 +15,7 @@
                  <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                      aria-label="Open user menu">
                      <span class="avatar avatar-sm"
-                         style="background-image: url({{ asset('assets/static/avatars/000m.jpg') }})"></span>
+                         style="background-image: url({{ asset('assets/static/avatars/1234.png') }})"></span>
                      <div class="d-none d-xl-block ps-2">
                          <div>Zaldi</div>
                          <div class="mt-1 small text-muted">zaldizaldizaldi032@gmail.com</div>
@@ -52,7 +52,6 @@
                              </span>
                          </a>
                      </li>
-
                      <li class="nav-item dropdown {{ request()->routeIs('perpus.*') ? 'active' : '' }}">
                          <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
                              data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -64,8 +63,8 @@
                              <a class="dropdown-item" href="{{ route('vehicles.login') }}">
                                  login
                              </a>
-                             <a class="dropdown-item" href="{{ route('vehicle.logout') }}">
-                                 logout
+                             <a class="dropdown-item" href="{{ route('admin.login') }}">
+                                 admin
                              </a>
                          </div>
                      </li>

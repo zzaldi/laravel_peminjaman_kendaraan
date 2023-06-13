@@ -7,8 +7,9 @@
         </div>
         <div class="card-body">
             <div class="btn-create">
-                <form method="POST" action="{{ route('vehicles.edit') }}">
+                <form method="POST" action="{{ route('vehicles.update', $show->id) }}">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" name="name"

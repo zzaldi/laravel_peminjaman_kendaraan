@@ -55,10 +55,10 @@ class VehicleController extends Controller
 
     public function show($id)
     {
-        $vehicle = Vehicle::find($id);
+        $show = Vehicle::findOrFail($id);
+
         return view('vehicles.show', compact('vehicle'));
     }
-
     public function edit($id)
     {
         $vehicle = Vehicle::findOrFail($id);
@@ -68,19 +68,30 @@ class VehicleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $vehicle = Vehicle::findOrFail($id);
+
+        // Validasi input
+        $validatedData = $request->validate([
             'name' => 'required',
             'brand' => 'required',
             'type' => 'required',
             'price' => 'required|numeric',
+            // Tambahkan validasi lain sesuai kebutuhan
         ]);
 
-        $vehicle = Vehicle::findOrFail($id);
-        $vehicle->update($request->all());
+        // Update data kendaraan
+        $vehicle->name = $validatedData['name'];
+        $vehicle->brand = $validatedData['brand'];
+        $vehicle->type = $validatedData['type'];
+        $vehicle->type = $validatedData['price'];
+        // Update atribut lain sesuai kebutuhan
 
-        return redirect()->route('vehicles.index')
-            ->with('success', 'Vehicle updated successfully');
+        $vehicle->save();
+
+        return redirect()->route('dashboard')->with('success', 'Kendaraan berhasil diperbarui');
     }
+
+
 
 
 

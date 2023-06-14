@@ -1,9 +1,9 @@
-@section('pageTitle', 'login Vehicle')
+@section('pageTitle', 'admin Vehicle')
 @extends('app.app')
 @section('content')
 
     <fieldset class="form-fieldset">
-        <form method="POST" action="{{ route('admin.login') }}">
+        <form method="POST" action="{{ route('vehicles.admin') }}">
             <div class="card card-md">
                 <div class="card-body">
                     <h2 class="h2 text-center mb-4">Login to your account</h2>

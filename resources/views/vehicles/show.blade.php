@@ -1,4 +1,4 @@
-@section('pageTitle', 'show Vehicle')
+@section('pageTitle', 'Edit Vehicle')
 @extends('app.app')
 @section('content')
     <div class="card">
@@ -12,8 +12,8 @@
                     @method('put')
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="nama"
-                            value="{{ $vehicle->nama }}" required>
+                        <input type="text" class="form-control" id="name" name="name"
+                            value="{{ $vehicle->name }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="brand" class="form-label">Brand</label>

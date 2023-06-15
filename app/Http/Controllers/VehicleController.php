@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class VehicleController extends Controller
 {
@@ -16,22 +18,37 @@ class VehicleController extends Controller
     {
         return view('vehicles.login');
     }
-
-    public function register(Request $request)
+    public function gologin(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'email' => 'required|email',
+            'password' => 'required',
+        ], [
+            'email.required' => 'Email wajib di isi',
+            'password.required' => 'password wajib di isi',
         ]);
 
-        $user = Vehicle::create([
+        $infologin = [
             'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+            ' pasword' => $request->password,
+        ];
 
-        Vehicle::login($user);
+        if (Auth::attemp($infologin)) {
+            //ini akan di masukkan jika sukses
+            return 'sukses';
+        } else {
+            //ini otesikasi gagal
+            return 'gagal';
+        }
+    }
 
-        return redirect('/dashboard');
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('dashboard');
     }
 
     public function create()
@@ -107,7 +124,7 @@ class VehicleController extends Controller
         return view('vehicles.logout', compact('vehicle'));
     }
 
-    public function logout(Request $request)
+    public function logt(Request $request)
     {
         $request->validate([
             'email' => 'required|email|unique:users',

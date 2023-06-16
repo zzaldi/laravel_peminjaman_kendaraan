@@ -14,41 +14,31 @@ class VehicleController extends Controller
         $vehicles = Vehicle::all();
         return view('vehicles.index', compact('vehicles'));
     }
-    public function login()
+    public $email;
+    public $password;
+    protected $rules = [
+        'password' => 'required',
+        'email' => 'required|email',
+    ];
+    public function Login()
     {
-        return view('vehicles.login');
-    }
-    public function gologin(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ], [
-            'email.required' => 'Email wajib di isi',
-            'password.required' => 'password wajib di isi',
-        ]);
 
-        $infologin = [
-            'email' => $request->email,
-            ' pasword' => $request->password,
+        $this->login();
+        $credentials = [
+            'email' => $this->email,
+            'password' => $this->password
         ];
-
-        if (Auth::attemp($infologin)) {
-            //ini akan di masukkan jika sukses
-            return 'sukses';
+        if (Auth::attempt($credentials)) {
+            session()->flash('message', 'Successfully login with your account!');
+            return redirect(route("dashboard"));
         } else {
-            //ini otesikasi gagal
-            return 'gagal';
+            session()->flash('error', 'Something wrong credentials!');
+            return redirect(back());
         }
     }
-
-    public function logout(Request $request)
+    public function render()
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('dashboard');
+        return view('vehicles.login');
     }
 
     public function create()

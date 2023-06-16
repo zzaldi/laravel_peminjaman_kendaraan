@@ -22,7 +22,7 @@
                      </div>
                  </a>
                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <a href="{{ route('vehicle.logout') }}" class="dropdown-item">login</a>
+                     <a href="{{ route('vehicles.logout') }}" class="dropdown-item">login</a>
                      <div class="dropdown-divider"></div>
                      <a href="./sign-in.html" class="dropdown-item">logout</a>
                  </div>
@@ -48,7 +48,7 @@
                      <li class="nav-item {{ request()->routeIs('vehicles.create') ? 'active' : '' }}">
                          <a class="nav-link" href="{{ route('vehicles.create') }}">
                              <span class="nav-link-title">
-                                 Create
+                                 Sewa mobil
                              </span>
                          </a>
                      </li>

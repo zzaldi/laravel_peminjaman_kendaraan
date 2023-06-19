@@ -3,7 +3,7 @@
 @section('content')
 
     <fieldset class="form-fieldset">
-        <form method="POST" action="{{ route('vehicle.logout') }}">
+        <form method="POST" action="{{ route('admin.logout') }}">
             <div class="form-footer">
                 <button type="submit" class="btn btn-primary w-100">log out</button>
             </div>

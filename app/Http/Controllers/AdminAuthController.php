@@ -17,7 +17,7 @@ class AdminAuthController extends Controller
     // Tampilkan halaman login admin
     public function showLoginForm()
     {
-        return view('admin.login');
+        return view('vehicles.admin');
     }
 
     // Lakukan autentikasi admin
@@ -25,9 +25,9 @@ class AdminAuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('admin')->attempt($credentials)) {
+        if (Auth::guard('admin.login')->attempt($credentials)) {
             // Jika autentikasi berhasil, arahkan ke halaman dashboard admin
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('index');
         } else {
             // Jika autentikasi gagal, tampilkan pesan kesalahan
             return redirect()->back()->with('error', 'Email atau password salah');
@@ -37,7 +37,7 @@ class AdminAuthController extends Controller
     // Logout admin
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('admin.logout')->logout();
         return redirect()->route('admin.login');
     }
 }

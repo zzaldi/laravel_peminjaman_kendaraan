@@ -1,66 +1,46 @@
-@section('pageTitle', 'login Vehicle')
-@extends('app.app')
-@section('content')
+<div>
+    <form method="POST" action="{{ route('vehicles.login') }}">
+        <div class="">
 
-    <fieldset class="form-fieldset col-lg-5 ">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8 py-6">
 
-        <form method="POST" action="{{ route('vehicles.login') }}">
-            <div class="col-lg-15 py-auto">
-                <div class="text-center my-5">
-                    <a href="#" class="navbar-brand navbar-brand-autodark"><img
-                            src="{{ asset('assets/static/zaldi.png') }}" height="70" alt=""></a>
 
-                    <div class="card card-md">
-                        <div class="card-body">
-                            <h2 class="h2 text-center mb-4">Login to your account</h2>
-                            <form action="./" method="get" autocomplete="off" novalidate="">
+                            
+                        </div>
+                        <div class="col-lg-4 py-auto">
+                            <div class="text-center my-5">
+                                <a href="#" class="navbar-brand navbar-brand-autodark"><img
+                                        src="{{ asset('assets/static/logo.svg') }}" height="36" alt=""></a>
+                            </div>
+
+
+                            <h2 class="card-title text-center mb-4">Login to your account</h2>
+                            <form wire:submit.prevent="handleLogin()" autocomplete="off" novalidate>
                                 <div class="mb-3">
-                                    <label class="form-label">Email address</label>
-                                    <input type="email" class="form-control" placeholder="your@email.com"
-                                        autocomplete="off">
+                                    <label class="form-label required">Email address</label>
+                                    <input type="email" wire:model="email" class="form-control"
+                                        placeholder="your@email.com" autocomplete="off">
                                     @error('email')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">
+                                    <label class="form-label required">
                                         Password
-                                        <span class="form-label-description">
-                                            <a href="./forgot-password.html">I forgot password</a>
-                                        </span>
                                     </label>
                                     <div class="input-group input-group-flat">
-                                        <input type="password" class="form-control" placeholder="Your password"
-                                            autocomplete="off">
-                                        @error('password')
-                                            <span class="error">{{ $message }}</span>
-                                        @enderror
-                                        <span class="input-group-text">
-                                            <a href="#" class="link-secondary" data-bs-toggle="tooltip"
-                                                aria-label="Show password" data-bs-original-title="Show password">
-                                                <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="10"
-                                                    height="10" viewBox="0 0 24 24" stroke-width="2"
-                                                    stroke="currentColor" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                    <path
-                                                        d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6">
-                                                    </path>
-                                                </svg>
-                                            </a>
-                                        </span>
+                                        <input type="password" wire:model="password" class="form-control"
+                                            placeholder="Your password" autocomplete="off">
                                     </div>
-                                </div>
-                                <div class="mb-2">
-                                    <label class="form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                        <span class="form-check-label">Remember me on this device</span>
-                                    </label>
+                                    @error('password')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-footer">
-                                    <button type="submit" class="btn btn-primary w-10">Sign in</button>
+                                    <button type="submit" class="btn btn-primary w-100">Sign in</button>
                                 </div>
                             </form>
                             <div class="mt-5">
@@ -80,5 +60,7 @@
                         </div>
                     </div>
                 </div>
-    </fieldset>
-@endsection
+            </div>
+        </div>
+    </form>
+</div>

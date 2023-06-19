@@ -7,6 +7,6 @@ class AdminDashboardController extends Controller
     // Tampilkan halaman dashboard admin
     public function index()
     {
-        return view('admin.dashboard');
+        return view('vehicles.index');
     }
 }
